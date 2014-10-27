@@ -28,7 +28,6 @@ FROM pertino/ubuntu:latest
 ```
 and call the entry code in your entrypoint shell:
 ```
-#!/bin/bash
 /pertino-entrypoint.sh
 ```
 
