@@ -9,7 +9,7 @@ touch /etc/sudoers
 mkdir -p /etc/resolvconf
 touch /etc/resolvconf/interface-order
 mv /sbin/dhclient /usr/sbin/dhclient
-
+export DEBIAN_FRONTEND=readline
 (
     cat <<EOF
 #!/usr/bin/expect -f
