@@ -17,9 +17,9 @@ export DEBIAN_FRONTEND=readline
 set timeout 60
 spawn apt-get install -y pertino-client
 expect "Username:"
-send "\$env(PERTINO_USERNAME)\r"
+send "\${PERTINO_USERNAME}\r"
 expect "Password:"
-send "\$env(PERTINO_PASSWORD)\r"
+send "\${PERTINO_PASSWORD}\r"
 interact
 
 EOF
