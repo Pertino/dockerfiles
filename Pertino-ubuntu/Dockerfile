@@ -14,5 +14,6 @@ RUN apt-get install -d pertino-client
 # end Pertino Client Install --------
 
 COPY docker-entrypoint.sh /entrypoint.sh
+COPY pertino-entrypoint.sh /pertino-entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
