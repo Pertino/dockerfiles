@@ -25,7 +25,7 @@ FROM pertino/ubuntu:latest
 ```
 and call the entry code in your entrypoint shell:
 ```
-su -c "/pertino-entrypoint.sh" -s /bin/sh root
+. /pertino-entrypoint.sh
 ```
 
 This should enable that application to talk over the Pertino network.  From time to time we will publish converted applications that you may use out of the box.  Until that time, feel free to experiment.

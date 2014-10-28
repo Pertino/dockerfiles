@@ -9,32 +9,16 @@ touch /etc/sudoers
 mkdir -p /etc/resolvconf
 touch /etc/resolvconf/interface-order
 mv /sbin/dhclient /usr/sbin/dhclient
-export DEBIAN_FRONTEND=readline
-(
-    cat <<EOF
-#!/usr/bin/expect -f
 
-set timeout 60
-spawn apt-get install -y pertino-client
-expect "Username:"
-send "\${PERTINO_USERNAME}\r"
-expect "Password:"
-send "\${PERTINO_PASSWORD}\r"
-interact
-
-EOF
-) > /tmp/setup-pertino.exp
-chmod +x /tmp/setup-pertino.exp
-
-if [[ $(dpkg -l pertino-client) ]]; then
-    :
-else
-    /tmp/setup-pertino.exp
-    echo -n 'Starting Tunnel...'; sleep 1;
-    while STATE=$(/opt/pertino/pgateway/pertino --status | grep -c TUNNEL_RUNNING); test "$STATE" != "1"; do
-        echo -n '.'; sleep 1;
-    done; echo
+cd /opt/pertino/pgateway
+if [ ! -z $PERTINO_USERNAME ] && [ ! -z $PERTINO_PASSWORD ]; then
+    ./.pauth -u ${PERTINO_USERNAME} -p ${PERTINO_PASSWORD}
 fi
+/etc/init.d/pgateway start
+echo -n 'Starting Tunnel...'; sleep 1;
+while STATE=$(/opt/pertino/pgateway/pertino --status | grep -c TUNNEL_RUNNING); test "$STATE" != "1"; do
+    echo -n '.'; sleep 1;
+done; echo
 
 if ! [ "${PERTINO_NETWORK}" == "" ]; then
     /opt/pertino/pgateway/pertino --select-network ${PERTINO_NETWORK}
