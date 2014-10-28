@@ -14,18 +14,14 @@ To run you must run privileged:
 ```
 export PERTINO_USERNAME=<your Pertino username>
 export PERTINO_PASSWORD=<your Pertino password>
-sudo docker run -t -i --privileged --hostname='pertino-test' \
+sudo docker run -d --name mypertino --privileged --hostname='pertino-test' \
   -e PERTINO_USERNAME=${PERTINO_USERNAME} \
   -e PERTINO_PASSWORD=${PERTINO_PASSWORD} pertino/ubuntu
 ```
 
-The real power of this container is the ablity to embed it in other applications.  To do this you need to inherit from it inside the Dockerfile:
+The real power of this container is the ablity to use this as the networking for another container
 ```
-FROM pertino/ubuntu:latest
-```
-and call the entry code in your entrypoint shell:
-```
-su -c "/pertino-entrypoint.sh" -s /bin/sh root
+docker run -it --rm --net container:mypertino debian:jessie bash
 ```
 
-This should enable that application to talk over the Pertino network.  From time to time we will publish converted applications that you may use out of the box.  Until that time, feel free to experiment.
+This should enable that application to talk over the Pertino network.
