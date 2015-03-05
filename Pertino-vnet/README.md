@@ -2,7 +2,7 @@ Pertino VNet
 ==============
 
 This image serves as a virtual interface into a Pertino secure network.
-It instantiated a virtual interface and connects it to the account specified with Pertino credentials or 
+It instantiates a virtual interface and connects it to the account specified with Pertino credentials or 
 license API key.
 
 To pull use the standard Docker image pull:
@@ -10,20 +10,21 @@ To pull use the standard Docker image pull:
 sudo docker pull pertino/vnic
 ```
 
-To run you must run privileged:
+This container should be run with privileged mode, however any other container can attached to it without 
+requiring privileges
+```
+export PERTINO_APIKEY=<your Pertino authentication API key>
+sudo docker run -t -i --privileged --hostname='pertino-test' \
+  -e PERTINO_APIKEY=${PERTINO_APIKEY} pertino/ubuntu
+```
+
+or
 ```
 export PERTINO_USERNAME=<your Pertino username>
 export PERTINO_PASSWORD=<your Pertino password>
 sudo docker run -t -i --privileged --hostname='pertino-test' \
   -e PERTINO_USERNAME=${PERTINO_USERNAME} \
   -e PERTINO_PASSWORD=${PERTINO_PASSWORD} pertino/ubuntu
-```
-
-or
-```
-export PERTINO_APIKEY=<your Pertino machine authentication API key>
-sudo docker run -t -i --privileged --hostname='pertino-test' \
-  -e PERTINO_APIKEY=${PERTINO_APIKEY} pertino/ubuntu
 ```
 
 
