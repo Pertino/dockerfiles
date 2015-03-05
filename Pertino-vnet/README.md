@@ -1,15 +1,16 @@
 #Pertino Overview
 
-Pertino delivers networking as a service and enables any size business to build and manage a cloud networks.
+Pertino delivers networking as a service and enables any size business to build and manage cloud networks.
 
-These cloud networks overlay the public Internet, securely connecting devices, servers, vms or containers across offices. data centers and public clouds. 
+These cloud networks overlay the public Internet, securely connecting devices, servers, VMs or containers across offices, data centers and public clouds. 
 Customers can link workloads running in the data centers with public cloud(s) and make them seem like they are part of a contiguous LAN space.
-All the underlying IP, DNS and NAT management is delivered transparently with no hardware or no configuration.  
+All the underlying IP, DNS and NAT management is delivered transparently with no hardware and no configuration.  
 Since Pertino relies on just an outbound 443 connection to establish a network, no changes to firewall settings or security groups are needed to make it work.  
 
 All inbound ports on your corporate firewall or external access to cloud instances can be blocked and Pertino could be used as a secure overlay.
 
 Pertino tunnels are secured with a best-in-class PKI infrastructure and AES 256-bit SSL encryption.  Pertino can be used for the following use-cases:
+
 - Link servers in data center with VMs/containers in the cloud
 - Link containers on multiple machines exclusively over a secure Pertino-based connection to setup a HA pair for instance
 
@@ -22,6 +23,7 @@ To pull, use the standard Docker image pull:
 
 ```
 sudo docker pull pertino/vnet
+
 ```
 This container should be run with privileged mode, however any other container can attached to it without requiring privileges
 
