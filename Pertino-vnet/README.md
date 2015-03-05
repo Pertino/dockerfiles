@@ -7,7 +7,7 @@ license API key.
 
 To pull use the standard Docker image pull:
 ```
-sudo docker pull pertino/vnic
+sudo docker pull pertino/vnet
 ```
 
 This container should be run with privileged mode, however any other container can attached to it without 
