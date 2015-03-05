@@ -16,16 +16,15 @@ This container should be run with privileged mode, however any other container c
 requiring privileges
 
 ```
-sudo docker run -t -i --privileged --hostname='pertino-test' \
-  -e PERTINO_APIKEY=<your Pertino authentication API key> pertino/ubuntu
+sudo docker run -t -i --privileged -e PERTINO_APIKEY=<your Pertino API key> pertino/vnet
 ```
 
-or
+or using your account credentials directly
 
 ```
-sudo docker run -t -i --privileged --hostname='pertino-test' \
+sudo docker run -t -i --privileged \
   -e PERTINO_USERNAME=<your Pertino username> \
-  -e PERTINO_PASSWORD=<your Pertino password> pertino/ubuntu
+  -e PERTINO_PASSWORD=<your Pertino password> pertino/vnet
 ```
 
 This application is designed to be run in conjunction with any other container that needs secure access. The companion application can use this container as the network interface effectively giving your application a secure private IP address without port mapping
