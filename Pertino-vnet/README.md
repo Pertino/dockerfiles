@@ -17,6 +17,7 @@ Pertino tunnels are secured with a best-in-class PKI infrastructure and AES 256-
 ##How to use Pertino VNet
 
 This image serves as a virtual interface into a Pertino secure network. It instantiates a virtual interface and connects it to the account specified with Pertino credentials or network API key. 
+Here are instructions on getting a network API key: https://support.pertino.com/hc/en-us/articles/204474105 
 
 
 To pull, use the standard Docker image pull:
