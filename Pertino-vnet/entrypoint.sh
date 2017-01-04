@@ -13,7 +13,7 @@ PERTINO_CMD="${PERTINO_PATH}/pertino"
 PERTINO_DAEMON="${PERTINO_PATH}/pGateway"
 
 if [ ! -z $PERTINO_APIKEY ]; then
-    $PERTINO_AUTHENTICATION_CMD -a ${PERTINO_APIKEY}
+    $PERTINO_AUTHENTICATION_CMD -d ${PERTINO_APIKEY}
 elif [ ! -z $PERTINO_USERNAME ] && [ ! -z $PERTINO_PASSWORD ]; then
     $PERTINO_AUTHENTICATION_CMD -u ${PERTINO_USERNAME} -p ${PERTINO_PASSWORD}
 fi
@@ -23,7 +23,7 @@ echo -n 'Starting Tunnel...'; sleep 1;
 # Start the pertino client
 $PERTINO_DAEMON >/dev/null 2>&1 &
 
-while STATE=$($PERTINO_CMD --status | grep -c TUNNEL_RUNNING); test "$STATE" != "1"; do
+while STATE=$($PERTINO_CMD --status | grep -c ACTIVE); test "$STATE" != "2"; do
     echo -n '.'; sleep 1;
 done; echo
 
